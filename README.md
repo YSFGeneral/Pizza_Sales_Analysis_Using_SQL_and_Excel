@@ -10,115 +10,66 @@ The Pizza Sales Analysis project aims to analyze and visualize the sales data of
 -	Microsoft SQL Server Management Studio – 19.2
 
 ### Key Performance Indicators (KPIs)
-  **Total Revenue**
-o	SQL Query:
-sql
-Copy code
-SELECT SUM(total_price) AS Total_Revenue
-FROM pizza_sales;
+**Total Revenue**
+![](Total_Revenue_q.png)
 
-...
+![](Total_Revenue.png)
 
-	**Average Order Value**
-o	SQL Query:
-sql
-Copy code
-SELECT SUM(total_price) / COUNT(DISTINCT order_id) AS Avg_Order_Value
-FROM pizza_sales;
+**Average Order Value**
+![](Avg_Order_Value_q.png)
 
-...
+![](Avg_Order_Value.png)
 
-	**Total Pizzas Sold**
-o	SQL Query:
-sql
-Copy code
-SELECT SUM(quantity) AS Total_Pizzas_Sold
-FROM pizza_sales;
+**Total Pizzas Sold**
+![](Total_Pizzas_Sold_q.png)
 
-...
+![](Total_Pizzas_Sold.png)
 
-	**Total Orders**
-o	SQL Query:
-sql
-Copy code
-SELECT COUNT(DISTINCT order_id) AS Total_Orders
-FROM pizza_sales;
+**Total Orders**
+![](Total_Orders_q.png)
 
-...
+![](Total_Orders.png)
 
-	**Average Pizzas Per Order**
-o	SQL Query:
-sql
-Copy code
-SELECT SUM(quantity) / COUNT(DISTINCT order_id) AS Avg_Pizzas_Per_Order
-FROM pizza_sales;
+**Average Pizzas Per Order**
+![](Avg_Pizzas_Per_Order_query.png)
 
-...
+![](Avg_Pizzas_Per_Order.png)
 
 ### Charts and Visualizations Requirements
-	**Daily Trend for Total Orders**
-o	SQL Query:
-sql
-Copy code
-SELECT DATENAME(DW, order_date) AS order_day, COUNT(DISTINCT order_id) AS Total_Order
-FROM pizza_sales
-GROUP BY DATENAME(DW, order_date);
+**Daily Trend for Total Orders**
+![](Daily_Trend_query.png)
 
-	**Hourly Trend**
-o	SQL Query:
-sql
-Copy code
-SELECT DATEPART(HOUR, order_time) AS order_hour, COUNT(DISTINCT order_id) AS Total_Order
-FROM pizza_sales
-GROUP BY DATEPART(HOUR, order_time)
-ORDER BY DATEPART(HOUR, order_time);
+![](Daily_Trend.png)
 
-	**% of Sales by Pizza Category**
-o	SQL Query:
-sql
-Copy code
-SELECT pizza_category, 
-       CAST(SUM(total_price) AS DECIMAL(10, 2)) AS Total_Sales, 
-       CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL(10, 2)) AS PCT
-FROM pizza_sales
-GROUP BY pizza_category;
+**Hourly Trend**
+![](Hourly_Trend_query.png)
 
-	**% of Sales by Pizza Size**
-o	SQL Query:
-sql
-Copy code
-SELECT pizza_size, 
-       CAST(SUM(total_price) AS DECIMAL(10, 2)) AS Total_Sales, 
-       CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL(10, 2)) AS PCT
-FROM pizza_sales
-GROUP BY pizza_size
-ORDER BY PCT DESC;
+![](Hourly_Trend.png)
 
-	**Total Pizzas Sold by Pizza Category**
-o	SQL Query:
-sql
-Copy code
-SELECT pizza_category, SUM(quantity) AS Total_Pizzas_Sold
-FROM pizza_sales
-GROUP BY pizza_category;
+**% of Sales by Pizza Category**
+![](%_sales_by_category_query.png)
 
-	**Top 5 Best Sellers by Total Pizzas Sold**
-o	SQL Query:
-sql
-Copy code
-SELECT TOP 5 pizza_name, SUM(quantity) AS Total_Pizzas_Sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Pizzas_Sold DESC;
+![](%_sales_by_category.png)
 
-	**Bottom 5 Worst Sellers by Total Pizzas Sold**
-o	SQL Query:
-sql
-Copy code
-SELECT TOP 5 pizza_name, SUM(quantity) AS Total_Pizzas_Sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Pizzas_Sold ASC;
+**% of Sales by Pizza Size**
+![](%_of_Sales_By_Size_query.png)
+
+![](%_of_Sales_By_Size.png)
+
+**Total Pizzas Sold by Pizza Category**
+![](Total_Pizzas_Sold_Category_q.png)
+
+![](Total_Pizzas_Sold_Category.png)
+
+**Top 5 Best Sellers by Total Pizzas Sold**
+![](Top_5_Best_Seller_query.png)
+
+![](Top_5_Best_Seller.png)
+
+**Bottom 5 Worst Sellers by Total Pizzas Sold**
+![](Bottom_5_Worst_Sellers_query.png)
+
+![](Bottom_5_Worst_Sellers.png)
 
 ### Data Cleaning and Visualization in Excel
 After performing the SQL queries to extract and calculate the necessary data, the information was imported into Excel for further data cleaning, processing, and visualization.
